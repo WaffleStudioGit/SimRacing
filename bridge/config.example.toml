@@ -14,9 +14,11 @@ keyboard = true
 engine_on = "i"        # key ignition / starter
 engine_off = "i"       # often same toggle; set blank to skip
 headlights = "l"
-btn1 = "h"             # e.g. horn
-btn2 = "c"             # e.g. look / camera
-btn3 = "v"
+# 3× Ender 3 / Creality mechanical endstops on A2 A3 A4
+endstop1 = "h"         # e.g. horn
+endstop2 = "c"         # e.g. look / camera
+endstop3 = "v"
+# btn1 / btn2 / btn3 still work as aliases for the same three inputs
 
 [forza]
 listen_ip = "0.0.0.0"

@@ -28,3 +28,13 @@ listen_port = 4444
 
 [assetto]
 physics_map = "Local\\acpmf_physics"
+
+# Optional: full paths so the launcher can start the game when you click it
+[launcher]
+forza_exe = ""
+beamng_exe = ""
+assetto_exe = ""
+# Examples (edit to your installs):
+# forza_exe = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\ForzaHorizon5\\ForzaHorizon5.exe"
+# beamng_exe = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\BeamNG.drive\\Bin64\\BeamNG.drive.x64.exe"
+# assetto_exe = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\assettocorsa\\acs.exe"

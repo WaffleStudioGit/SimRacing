@@ -1,0 +1,30 @@
+[serial]
+# Windows: "COM3"   macOS: "/dev/tty.usbmodem..."   Linux: "/dev/ttyUSB0"
+port = "COM3"
+baud = 115200
+
+[gauges]
+max_speed_kmh = 300
+max_rpm = 9000
+update_hz = 30
+
+# Map cabin hardware → keys you bind in-game (pynput names / single chars)
+[controls]
+keyboard = true
+engine_on = "i"        # key ignition / starter
+engine_off = "i"       # often same toggle; set blank to skip
+headlights = "l"
+btn1 = "h"             # e.g. horn
+btn2 = "c"             # e.g. look / camera
+btn3 = "v"
+
+[forza]
+listen_ip = "0.0.0.0"
+listen_port = 5300
+
+[beamng]
+listen_ip = "0.0.0.0"
+listen_port = 4444
+
+[assetto]
+physics_map = "Local\\acpmf_physics"

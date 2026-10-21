@@ -8,6 +8,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict
 
+from .controls import CabinController, binds_from_config
 from .serial_out import GaugeSerial
 from .sources import SOURCES
 from .sources.assetto import AssettoSource
@@ -46,9 +47,18 @@ def build_source(game: str, cfg: Dict[str, Any], max_speed: float, max_rpm: floa
     raise SystemExit(f"Unknown game: {game}")
 
 
+def _fmt_cabin(inputs) -> str:
+    if inputs is None:
+        return "cabin=—"
+    e = "ON" if inputs.engine else "off"
+    h = "H" if inputs.headlights else "·"
+    b = "".join("*" if x else "·" for x in (inputs.btn1, inputs.btn2, inputs.btn3))
+    return f"eng={e} lit={h} btn={b}"
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Sim racing telemetry → Arduino speed/RPM servos"
+        description="Sim racing telemetry → Arduino gauges / shift lights / cabin controls"
     )
     parser.add_argument(
         "--game",
@@ -64,7 +74,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Print telemetry, do not open serial",
+        help="Print telemetry, do not open serial / press keys",
+    )
+    parser.add_argument(
+        "--no-keys",
+        action="store_true",
+        help="Do not inject keyboard events for cabin controls",
     )
     args = parser.parse_args(argv)
 
@@ -93,6 +108,11 @@ def main(argv: list[str] | None = None) -> int:
     source = build_source(args.game, cfg, max_speed, max_rpm)
     print(f"source={source.name}  max_speed={max_speed:.0f} km/h  max_rpm={max_rpm:.0f}")
 
+    binds = binds_from_config(cfg)
+    if args.no_keys:
+        binds.enabled = False
+    cabin = CabinController(binds, dry_run=args.dry_run or not binds.enabled)
+
     gauge = None
     if not args.dry_run:
         gauge = GaugeSerial(port, baud)
@@ -103,6 +123,9 @@ def main(argv: list[str] | None = None) -> int:
     last_push = 0.0
     try:
         for frame in source.frames():
+            if gauge is not None:
+                gauge.poll_inputs(on_input=cabin.handle)
+
             now = time.monotonic()
             if now - last_push < min_interval:
                 continue
@@ -110,20 +133,20 @@ def main(argv: list[str] | None = None) -> int:
 
             speed = min(frame.speed_kmh, max_speed)
             rpm = min(frame.rpm, max_rpm)
-            # If the game reports redline, optionally retune tach scale once
             if frame.max_rpm and frame.max_rpm > 1000 and gauge is not None:
                 if abs(frame.max_rpm - max_rpm) > 50:
                     max_rpm = frame.max_rpm
                     gauge.configure(max_speed, max_rpm)
 
             status = "ok" if frame.connected else "waiting"
-            line = f"\r{status:7}  {speed:6.1f} km/h   {rpm:6.0f} rpm"
+            cabin_s = _fmt_cabin(gauge.last_inputs if gauge else None)
+            line = (
+                f"\r{status:7}  {speed:6.1f} km/h   {rpm:6.0f} rpm   {cabin_s}   "
+            )
             print(line, end="", flush=True)
 
             if gauge is not None:
                 gauge.send(speed, rpm)
-            elif args.dry_run:
-                pass
     except KeyboardInterrupt:
         print("\nstopped")
     finally:

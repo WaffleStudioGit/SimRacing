@@ -1,28 +1,30 @@
-"""Serial writer for the Arduino gauge firmware."""
+"""Serial IO for the Arduino gauge / cabin firmware."""
 
 from __future__ import annotations
 
 import time
-from typing import Optional
+from typing import Callable, Optional
 
 import serial
 
-from .protocol import config_line, value_line, zero_line
+from .protocol import CabinInputs, config_line, parse_input_line, value_line, zero_line
 
 
 class GaugeSerial:
-    def __init__(self, port: str, baud: int = 115200, timeout: float = 0.2) -> None:
+    def __init__(self, port: str, baud: int = 115200, timeout: float = 0.05) -> None:
         self.port = port
         self.baud = baud
         self.timeout = timeout
         self._ser: Optional[serial.Serial] = None
         self._last_sent = (None, None)
+        self._rx_buf = ""
+        self.last_inputs: Optional[CabinInputs] = None
 
     def open(self) -> None:
         self._ser = serial.Serial(self.port, self.baud, timeout=self.timeout)
-        # USB-serial boards reset on open; give firmware a moment
         time.sleep(2.0)
         self._ser.reset_input_buffer()
+        self._rx_buf = ""
 
     def close(self) -> None:
         if self._ser and self._ser.is_open:
@@ -46,6 +48,29 @@ class GaugeSerial:
             return
         self._ser.write(value_line(speed_kmh, rpm))
         self._last_sent = key
+
+    def poll_inputs(
+        self, on_input: Optional[Callable[[CabinInputs], None]] = None
+    ) -> Optional[CabinInputs]:
+        """Read any pending Arduino lines; return latest cabin state if any."""
+        assert self._ser is not None
+        latest: Optional[CabinInputs] = None
+        chunk = self._ser.read(self._ser.in_waiting or 0)
+        if chunk:
+            self._rx_buf += chunk.decode("ascii", errors="ignore")
+        while "\n" in self._rx_buf:
+            line, self._rx_buf = self._rx_buf.split("\n", 1)
+            line = line.strip()
+            if not line or line.startswith("OK"):
+                continue
+            parsed = parse_input_line(line)
+            if parsed is None:
+                continue
+            latest = parsed
+            self.last_inputs = parsed
+            if on_input is not None:
+                on_input(parsed)
+        return latest
 
     def __enter__(self) -> "GaugeSerial":
         self.open()

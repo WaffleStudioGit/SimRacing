@@ -1,93 +1,61 @@
 # SimRacing gauges
 
-Game speed + RPM → PC bridge → Arduino → two servos (speedo + tach).
-
-Supports **Forza Horizon / Motorsport** (Data Out UDP), **BeamNG.drive** (OutGauge), **Assetto Corsa** (shared memory, Windows), plus a **demo** sweep for bench testing.
+Game speed + RPM → PC bridge → Arduino → servos, shift-light bar, cabin controls.
 
 ```
-Game telemetry ──► bridge (Python) ──serial──► Arduino ──► servo speed
-                                                      └──► servo rpm
+Game ──telemetry──► bridge ──serial──► Arduino ──► speed servo
+                                      │           rpm servo
+                                      │           10× LED shift lights
+                                      └──◄── key / lights / 3 buttons
+                                              (bridge → in-game keys)
 ```
 
-## Hardware
+Games: **Forza** (Data Out), **BeamNG** (OutGauge), **Assetto Corsa** (shared memory), plus **demo** sweep.
 
-| Piece | Notes |
-|-------|--------|
-| Arduino Uno / Nano / similar | Any board with `Servo.h` |
-| 2× hobby servos | SG90 is fine for light needles |
-| Separate 5V supply for servos | Do **not** power both servos from the Arduino 5V pin |
-| Common GND | Arduino GND tied to servo supply GND |
+## Hardware (matches a typical Uno bench)
 
-**Pins (change in firmware if you want):**
+| Piece | Arduino pin | Notes |
+|-------|-------------|--------|
+| Speed servo | **D9** | Own 5V supply, common GND |
+| RPM servo | **D10** | same |
+| LED bar (10) GGGG YYY RRR | **D2–D8, D11, D12, D13** | Anode → pin, cathode → **220Ω** → GND |
+| Engine key (toggle) | **A0** | Switch between pin and GND (pull-up on) |
+| Headlights rocker | **A1** | same |
+| Pushbuttons 1 / 2 / 3 | **A2 / A3 / A4** | Momentary to GND |
 
-- Speed servo signal → **D9**
-- RPM servo signal → **D10**
-
-After mounting needles, edit `SPEED_DEG_*` / `RPM_DEG_*` in `firmware/gauge_servos/gauge_servos.ino` so 0 and full-scale match the dial artwork.
+Shift lights fill left→right with RPM (first LED ~55% redline, full bar at redline, flash above ~97%). Key **off** parks needles and kills the bar.
 
 ## Firmware
 
-1. Open `firmware/gauge_servos/gauge_servos.ino` in Arduino IDE.
-2. Flash the board.
-3. Serial monitor @ **115200** should print `OK gauge_servos`.
-
-Protocol (newline-terminated):
+1. Flash `firmware/gauge_servos/gauge_servos.ino`
+2. Serial @ **115200** → `OK gauge_servos`, then `I …` input lines
 
 ```
-V <speed_kmh> <rpm>     # move needles
-C <max_speed> <max_rpm> # set full-scale
-Z                       # needles to zero
+PC → board:  V <km/h> <rpm>   |  C <max_speed> <max_rpm>  |  Z
+board → PC:  I <engine> <lights> <btn1> <btn2> <btn3>
 ```
 
-## Bridge (PC)
+## Bridge
 
 ```bash
 cd bridge
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-source .venv/bin/activate
 pip install -r requirements.txt
-cp config.example.toml config.toml   # edit port / UDP ports
-```
-
-**Bench test (no game):**
-
-```bash
+pip install pynput          # Windows gaming PC — cabin → keyboard
+cp config.example.toml config.toml   # set COM port + keybinds
 python -m sim_gauges --game demo --port COM3
-# or dry-run without hardware:
-python -m sim_gauges --game demo --dry-run
-```
-
-**Games:**
-
-```bash
 python -m sim_gauges --game forza --port COM3
-python -m sim_gauges --game beamng --port COM3
-python -m sim_gauges --game assetto --port COM3   # Windows, game running
 ```
 
-### Per-game setup
+Bind the keys in `[controls]` to whatever your game uses for ignition, lights, horn, etc. Use `--no-keys` to only watch cabin state.
 
-**Forza Horizon 5 / Motorsport**  
-Settings → HUD / DATA OUT → On. IP = this PC, port = `forza.listen_port` in config (default `5300`). Windows Firewall must allow UDP inbound.
+### Game telemetry
 
-**BeamNG.drive**  
-Options → Other → OutGauge enabled, same IP/port as `beamng.listen_port` (default `4444`).
-
-**Assetto Corsa**  
-Run the bridge on the **same Windows PC** as the game. No extra plugins — reads `Local\acpmf_physics`.
-
-## Layout
-
-```
-firmware/gauge_servos/   Arduino sketch
-bridge/sim_gauges/       Python package
-bridge/config.example.toml
-bridge/tests/            Packet / protocol checks
-```
+- **Forza**: Data Out ON → this PC IP, port `5300`
+- **BeamNG**: OutGauge → port `4444`
+- **Assetto Corsa**: bridge on same Windows PC as the game
 
 ## Notes
 
-- Full-scale defaults are 300 km/h and 9000 rpm (`config.toml` / `--max-speed` / `--max-rpm`). Forza also retunes max RPM from the packet when redline is present.
-- Assetto Corsa Competizione uses different shared memory; this repo targets Assetto Corsa.
-- If needles twitch, lower `gauges.update_hz` or add mechanical damping on the linkage.
+- Put a resistor on every LED. Ten bare LEDs will abuse the Uno.
+- Servos need a separate 5V brick; USB alone is not enough.
+- Tune needle travel with `SPEED_DEG_*` / `RPM_DEG_*` in the sketch after you mount the dials.

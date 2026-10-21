@@ -4,22 +4,27 @@ port = "COM3"
 baud = 115200
 
 [gauges]
-# Full-scale values sent to the Arduino (C command) and used for clamping
 max_speed_kmh = 300
 max_rpm = 9000
-# How often to push updates to the board (Hz)
 update_hz = 30
 
+# Map cabin hardware → keys you bind in-game (pynput names / single chars)
+[controls]
+keyboard = true
+engine_on = "i"        # key ignition / starter
+engine_off = "i"       # often same toggle; set blank to skip
+headlights = "l"
+btn1 = "h"             # e.g. horn
+btn2 = "c"             # e.g. look / camera
+btn3 = "v"
+
 [forza]
-# Enable Data Out in FH5 / FM: UDP, IP = this PC, port below
 listen_ip = "0.0.0.0"
 listen_port = 5300
 
 [beamng]
-# BeamNG: Options → Other → OutGauge, IP + port
 listen_ip = "0.0.0.0"
 listen_port = 4444
 
 [assetto]
-# Assetto Corsa shared memory (Windows). Physics map name is fixed by the game.
 physics_map = "Local\\acpmf_physics"

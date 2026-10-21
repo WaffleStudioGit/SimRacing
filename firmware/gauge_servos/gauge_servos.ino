@@ -7,7 +7,7 @@
  *   Z
  *
  * Arduino → PC (on change / ~20 Hz):
- *   I <engine> <headlights> <btn1> <btn2> <btn3>   // 0 or 1 each
+ *   I <engine> <headlights> <es1> <es2> <es3>   // 0 or 1 each
  *
  * Wiring (Uno):
  *   Speed servo D9, RPM servo D10  (own 5V supply, common GND)
@@ -15,7 +15,12 @@
  *     order: G G G G  Y Y Y  R R R
  *   Engine key (toggle)  A0 → switch → GND   (INPUT_PULLUP)
  *   Headlights rocker    A1 → switch → GND
- *   Pushbuttons 1..3     A2 A3 A4 → button → GND
+ *
+ *   3× Ender 3 / Creality mechanical endstops as buttons (A2 A3 A4):
+ *     Plug: usually  [GND] [SIG] [VCC]  or labeled G / S / V  (check your cable)
+ *     Arduino:         GND   A?    5V
+ *     Triggered (lever pressed) = SIG LOW = button "on"
+ *     Set ENDSTOP_INVERT to 1 if your switches read backwards
  */
 
 #include <Servo.h>
@@ -28,16 +33,19 @@ constexpr uint8_t NUM_LEDS = 10;
 
 constexpr uint8_t PIN_ENGINE = A0;
 constexpr uint8_t PIN_LIGHTS = A1;
-constexpr uint8_t PIN_BTN1 = A2;
-constexpr uint8_t PIN_BTN2 = A3;
-constexpr uint8_t PIN_BTN3 = A4;
+constexpr uint8_t PIN_ENDSTOP1 = A2;
+constexpr uint8_t PIN_ENDSTOP2 = A3;
+constexpr uint8_t PIN_ENDSTOP3 = A4;
+
+// Creality mechanical: pressed → LOW. Optical boards sometimes differ.
+constexpr uint8_t ENDSTOP_INVERT = 0;
+constexpr unsigned long DEBOUNCE_MS = 25;
 
 constexpr int SPEED_DEG_MIN = 0;
 constexpr int SPEED_DEG_MAX = 180;
 constexpr int RPM_DEG_MIN = 0;
 constexpr int RPM_DEG_MAX = 180;
 
-// Shift light: first LED at this fraction of redline, full bar at 1.0
 constexpr float LED_START_FRAC = 0.55f;
 constexpr float LED_FLASH_FRAC = 0.97f;
 
@@ -52,12 +60,45 @@ String lineBuf;
 
 uint8_t prevEngine = 0xFF;
 uint8_t prevLights = 0xFF;
-uint8_t prevBtn1 = 0xFF;
-uint8_t prevBtn2 = 0xFF;
-uint8_t prevBtn3 = 0xFF;
+uint8_t prevEs1 = 0xFF;
+uint8_t prevEs2 = 0xFF;
+uint8_t prevEs3 = 0xFF;
 unsigned long lastInputMs = 0;
 unsigned long lastBlinkMs = 0;
 bool blinkOn = true;
+
+struct DebouncedPin {
+  uint8_t pin;
+  uint8_t stable;
+  uint8_t lastRaw;
+  unsigned long lastChangeMs;
+
+  void begin() {
+    pinMode(pin, INPUT_PULLUP);
+    lastRaw = digitalRead(pin);
+    stable = lastRaw;
+    lastChangeMs = millis();
+  }
+
+  // Returns 1 when endstop is triggered / button down
+  uint8_t readTriggered() {
+    uint8_t raw = digitalRead(pin);
+    unsigned long now = millis();
+    if (raw != lastRaw) {
+      lastRaw = raw;
+      lastChangeMs = now;
+    } else if ((now - lastChangeMs) >= DEBOUNCE_MS) {
+      stable = raw;
+    }
+    bool low = (stable == LOW);
+    if (ENDSTOP_INVERT) low = !low;
+    return low ? 1 : 0;
+  }
+};
+
+DebouncedPin endstop1{PIN_ENDSTOP1, 0, 0, 0};
+DebouncedPin endstop2{PIN_ENDSTOP2, 0, 0, 0};
+DebouncedPin endstop3{PIN_ENDSTOP3, 0, 0, 0};
 
 int mapClamped(float value, float vmax, int dmin, int dmax) {
   if (vmax < 1.0f) vmax = 1.0f;
@@ -129,27 +170,26 @@ void setOutputs(float speedKmh, float rpm, bool engineOn) {
 void reportInputs(bool force) {
   uint8_t engine = readActiveLow(PIN_ENGINE);
   uint8_t lights = readActiveLow(PIN_LIGHTS);
-  uint8_t b1 = readActiveLow(PIN_BTN1);
-  uint8_t b2 = readActiveLow(PIN_BTN2);
-  uint8_t b3 = readActiveLow(PIN_BTN3);
+  uint8_t es1 = endstop1.readTriggered();
+  uint8_t es2 = endstop2.readTriggered();
+  uint8_t es3 = endstop3.readTriggered();
 
   bool changed = force ||
       engine != prevEngine || lights != prevLights ||
-      b1 != prevBtn1 || b2 != prevBtn2 || b3 != prevBtn3;
+      es1 != prevEs1 || es2 != prevEs2 || es3 != prevEs3;
 
   unsigned long now = millis();
   if (!changed && (now - lastInputMs) < 50) return;
 
-  // Engine key edge: refresh gauges/LEDs immediately
   if (engine != prevEngine && prevEngine != 0xFF) {
     setOutputs(lastSpeed, lastRpm, engine != 0);
   }
 
   prevEngine = engine;
   prevLights = lights;
-  prevBtn1 = b1;
-  prevBtn2 = b2;
-  prevBtn3 = b3;
+  prevEs1 = es1;
+  prevEs2 = es2;
+  prevEs3 = es3;
   lastInputMs = now;
 
   Serial.print(F("I "));
@@ -157,11 +197,11 @@ void reportInputs(bool force) {
   Serial.print(' ');
   Serial.print(lights);
   Serial.print(' ');
-  Serial.print(b1);
+  Serial.print(es1);
   Serial.print(' ');
-  Serial.print(b2);
+  Serial.print(es2);
   Serial.print(' ');
-  Serial.println(b3);
+  Serial.println(es3);
 }
 
 void handleLine(String line) {
@@ -200,9 +240,9 @@ void setup() {
 
   pinMode(PIN_ENGINE, INPUT_PULLUP);
   pinMode(PIN_LIGHTS, INPUT_PULLUP);
-  pinMode(PIN_BTN1, INPUT_PULLUP);
-  pinMode(PIN_BTN2, INPUT_PULLUP);
-  pinMode(PIN_BTN3, INPUT_PULLUP);
+  endstop1.begin();
+  endstop2.begin();
+  endstop3.begin();
 
   speedServo.attach(SPEED_PIN);
   rpmServo.attach(RPM_PIN);
@@ -227,7 +267,6 @@ void loop() {
     }
   }
 
-  // Keep redline blink alive between telemetry frames
   if (readActiveLow(PIN_ENGINE) && lastRpm / maxRpm >= LED_FLASH_FRAC) {
     updateShiftLights(lastRpm, true);
   }

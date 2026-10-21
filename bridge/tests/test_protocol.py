@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from sim_gauges.controls import CabinController, KeyBinds
+from sim_gauges.controls import CabinController, KeyBinds, binds_from_config
 from sim_gauges.protocol import (
     CabinInputs,
     config_line,
@@ -36,7 +36,16 @@ def test_cabin_edges_dry_run():
     ctrl.handle(CabinInputs(False, False, False, False, False))  # prime
     ctrl.handle(CabinInputs(True, False, False, False, False))  # engine on
     ctrl.handle(CabinInputs(True, True, False, False, False))  # lights
-    ctrl.handle(CabinInputs(True, True, True, False, False))  # btn1 press
+    ctrl.handle(CabinInputs(True, True, True, False, False))  # endstop1 press
+
+
+def test_endstop_config_alias():
+    binds = binds_from_config({"controls": {"endstop1": "x", "endstop2": "y", "endstop3": "z"}})
+    assert binds.btn1 == "x"
+    assert binds.btn2 == "y"
+    assert binds.btn3 == "z"
+    binds2 = binds_from_config({"controls": {"btn1": "a"}})
+    assert binds2.btn1 == "a"
 
 
 def test_forza_offsets_unpack():

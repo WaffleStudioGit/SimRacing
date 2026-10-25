@@ -11,7 +11,9 @@ if a link is dead, use the search link in the last column.
 > **check fit** should be compared against the AliExpress listing (photos, dimensions)
 > before you order.
 
-## Estimated total (Oct 2026, before tax and shipping)
+## Estimated total (Oct 2026, before shipping)
+
+Sales tax below is **6%** on the part prices. Amazon shipping is not included.
 
 ### Main components 1–14 (cheaper encoder, **two** button packs, **no** wireless board)
 
@@ -27,21 +29,23 @@ if a link is dead, use the search link in the last column.
 | 8 | Wireless button board | — | **Not included** in subtotal below |
 | 9 | XT60 connectors (5 pairs) | 8 | Estimate (~$8–12 for genuine Amass 5-pair) |
 | 10 | Limit switches (10-pack) | 6 | Amazon listing |
-| 11 | Push buttons, **2×** 6-pack | 18 | Amazon listing ($9 × 2 per BOM) |
-| 12 | Magnets 30×10×4 mm (18-pack) | 12 | Estimate |
+| 11 | Push buttons, 12 mm momentary (10-pack) | 4 | [ucomshop 10-pack](https://www.amazon.com/dp/B072535X2W) (~$3.50). One pack covers the 8 wheel buttons. |
+| 12 | Magnets 30×10×4 mm (18-pack) | 12 | Paddle magnets. Skip if you already have them. |
 | 13 | 2×AA battery holder | 6 | Amazon listing (3-pack; you need one) |
 | 14 | 24 V 10 A PSU | 22 | Amazon listing |
-| | **Subtotal (main only)** | **307** | |
+| | **Subtotal (main only)** | **293** | |
+| | 6% sales tax | 18 | |
+| | **Main only, with tax** | **311** | |
 
-| Group | Cost |
-|-------|------|
-| Main components (table above) | 307 |
-| Wireless button board (item 8, unconfirmed part) | ~20 |
-| Quick release upgrade (items 15–18) | ~57 |
-| Nuts, bolts, nails | ~20 |
-| **Full build** | **~404** |
+| Group | Before tax | With 6% tax |
+|-------|------------|-------------|
+| Main components | 293 | 311 |
+| Wireless button board (item 8, unconfirmed) | 20 | 21 |
+| Quick release upgrade (items 15–18) | 57 | 60 |
+| Nuts, bolts, nails | 20 | 21 |
+| **Full build** | **390** | **413** |
 
-Without the quick release upgrade: **~$327** (307 + 20 wireless). Using the ~$95 suede rim instead of the $23 wheel adds about $72. Genuine Omron encoder adds $90 on item 3.
+Without the quick release upgrade: **$313** before tax, **$332** with tax (293 + 20 wireless). The ~$95 suede rim adds about $72. Genuine Omron encoder adds $90 on item 3.
 
 ### If you already have a hoverboard and lever switches
 
@@ -57,7 +61,30 @@ The kit magnet is diametric (poles on the round face). The 30×10×4 mm paddle m
 
 Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zone feels like backlash). The hoverboard's built-in Hall sensors are too coarse.
 
-With a hoverboard, Ender 3 switches, the $23 wheel, and an MT6701 instead of the belt encoder stack, the main-parts subtotal is about **$157** (controller $63, wheel $23, XT60s $8, two button packs $18, paddle magnets $12, battery holder $6, power supply $22, encoder $5).
+### What you still buy
+
+Already on hand: hoverboard motor, Ender 3 lever switches, paddle magnets. Encoder is the $5 MT6701, so the belt, pulley, and idler are out. Buttons are one $4 ten-pack.
+
+| Part | ~$ |
+|------|-----|
+| MKS XDrive Mini | 63 |
+| Steering wheel | 23 |
+| XT60 connectors | 8 |
+| Push buttons (10-pack) | 4 |
+| 2×AA battery holder | 6 |
+| 24 V 10 A power supply | 22 |
+| MT6701 encoder | 5 |
+| **Before tax** | **131** |
+| 6% sales tax | 8 |
+| **With tax** | **139** |
+
+The wireless button board is still extra if you do not already have one (~$20, about $21 with tax). That makes this cart **$151** before tax and **$160** with tax.
+
+### Why the batteries are there
+
+The 24 V supply powers the motor controller, which stays on the desk. The buttons live in the rim, and the rim spins, so a cable from those buttons to the PC would twist. The design puts a small wireless board in the rim and runs it on **two AA cells** (3 V) through the battery holder. The cells themselves are not in the price above, only the holder.
+
+Skip the holder and the cells if you do not use that wireless board. A coiled cable or a slip ring can carry the buttons instead, and then nothing in the rim needs a battery.
 
 ## Main components
 
@@ -73,9 +100,9 @@ With a hoverboard, Ender 3 switches, the $23 wheel, and an MT6701 instead of the
 | 8 | Wireless button board | No confirmed match — best guess: a 2.4 GHz wireless "zero delay" arcade encoder | — | **Check fit.** The AliExpress listing couldn't be read. It runs off the 2×AA holder (item 13), which points to a 2.4 GHz zero-delay wireless encoder with a USB receiver. Compare photos and pin layout with the AliExpress board. | [search](https://www.amazon.com/s?k=2.4G+wireless+zero+delay+arcade+encoder) |
 | 9 | XT60 connectors | [Amass XT60 male/female, 5 pairs](https://www.amazon.com/dp/B00WND5A5C) | $8 | Estimate; 10-pair with heat shrink: [YoWoo/Amass](https://www.amazon.com/dp/B07233RVL6) | [search](https://www.amazon.com/s?k=Amass+XT60+connectors) |
 | 10 | Limit switches (roller lever) | [HiLetgo KW12-3 roller lever micro switch (10-pack)](https://www.amazon.com/dp/B07X142VGC) | $6 | Paddle shifters. Wire to the normally-open (NO) pin. | [search](https://www.amazon.com/s?k=KW12-3+roller+lever+limit+switch) |
-| 11 | Push buttons (buy two sets) | [Twidec 12 mm momentary, pre-wired (6-pack)](https://www.amazon.com/dp/B08JHW8BPV) | $18 | 8 buttons on the wheel → **2×** six-packs ($9 each). Alt: [ESUPPORT 10-pack](https://www.amazon.com/dp/B018TV1E4C). **Check fit**: 12 mm hole. | [search](https://www.amazon.com/s?k=12mm+momentary+push+button+switch) |
-| 12 | Magnets 30×10×4 mm (or 30×10×3) | [ENHOCIYT 30×10×4 mm neodymium (18-pack)](https://www.amazon.com/dp/B0C9CKX9Y9) | $12 | Estimate for 18-pack. Paddle magnets. | [search](https://www.amazon.com/s?k=30x10x4mm+neodymium+block+magnet) |
-| 13 | AA battery holder (2× AA) | [LampVPath 2×AA holder with leads (3-pack)](https://www.amazon.com/dp/B07TB4HDYH) | $6 | With on/off switch: [LampVPath 2-pack](https://www.amazon.com/dp/B09T9XZH5M) | [search](https://www.amazon.com/s?k=2+AA+battery+holder+with+leads) |
+| 11 | Push buttons | [ucomshop 12 mm momentary, 10-pack](https://www.amazon.com/dp/B072535X2W) | $4 | One pack covers the 8 wheel buttons (12 mm hole). Pre-wired if you would rather not solder: [Meimom 10-pack](https://www.amazon.com/dp/B0D5MC7881) (~$9). | [search](https://www.amazon.com/s?k=12mm+momentary+push+button+10+pack) |
+| 12 | Magnets 30×10×4 mm (or 30×10×3) | [ENHOCIYT 30×10×4 mm neodymium (18-pack)](https://www.amazon.com/dp/B0C9CKX9Y9) | $12 | Paddle return magnets. Not required if you already have magnets that fit the printed holders. The MT6701 kit includes its own small diametric magnet; these bar magnets do not replace that one. | [search](https://www.amazon.com/s?k=30x10x4mm+neodymium+block+magnet) |
+| 13 | AA battery holder (2× AA) | [LampVPath 2×AA holder with leads (3-pack)](https://www.amazon.com/dp/B07TB4HDYH) | $6 | Powers the wireless button board in the spinning rim only. The motor uses the 24 V supply. With on/off switch: [LampVPath 2-pack](https://www.amazon.com/dp/B09T9XZH5M). | [search](https://www.amazon.com/s?k=2+AA+battery+holder+with+leads) |
 | 14 | Power supply 24 V 10 A | [ALITOVE 24V 10A 240W](https://www.amazon.com/dp/B078RYWZMH) | $22 | Name brand: [Mean Well SP-240-24](https://www.amazon.com/dp/B00NBMW7F0) | [search](https://www.amazon.com/s?k=24V+10A+240W+power+supply) |
 
 ## Upgraded quick release (only if you're upgrading from the old design)

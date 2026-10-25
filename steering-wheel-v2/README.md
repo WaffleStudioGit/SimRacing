@@ -74,11 +74,9 @@ Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit
 | 5 | 1S 3.7 V 500 mAh LiPo (ESP32 in the rim) | B07QM19PL8 | 12 |
 | 6 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
 | 7 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
-| 8 | 50 mm Arca-Swiss clamp | B00KYEO70Q | 14 |
-| 9 | 100 mm Arca-Swiss plate | B076Z8LL5Y | 9 |
-| | **Before tax** | | **163** |
-| | 6% sales tax | | 10 |
-| | **With tax** | | **173** |
+| | **Before tax** | | **140** |
+| | 6% sales tax | | 8 |
+| | **With tax** | | **148** |
 
 Screws and nails are listed at the bottom and are not in that total.
 

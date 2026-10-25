@@ -90,6 +90,20 @@ The MKS XDrive Mini does not bring every GPIO pin out to a connector, and FFBeas
 
 Wired this way, drop the wireless board and the battery holder. The cart above goes from $131 to **$125** before tax, **$133** with 6% tax.
 
+### ESP32 in the rim, no cable down the shaft
+
+An ESP32 replaces the wireless button board. Flash it with the [ESP32-BLE-Gamepad](https://github.com/lemmingDev/ESP32-BLE-Gamepad) library and it shows up as a Bluetooth gamepad. FFBeast on the XDrive Mini stays as it is and still does the force feedback. The game sees two devices: the wheel axis from FFBeast, and the buttons from the ESP32.
+
+Use a board that has Bluetooth: original ESP32, ESP32-C3, ESP32-S3, or ESP32-C6. An ESP32-S2 has no Bluetooth radio. A Super Mini fits the printed pocket better than a full-size dev board. Example: [AITRIP ESP32-C3 Super Mini, 2-pack, ~$10](https://www.amazon.com/dp/B0FBGDFPBQ).
+
+Each face button and each paddle goes from its own GPIO pin to ground. The sketch uses the internal pull-up. Those leads stay inside the rim. Nothing runs out to the PC.
+
+The original 2×AA pack is a poor supply for this. A connected ESP32 draws tens of milliamps and two AA cells sag until the board resets. Power a Super Mini from a small 1S LiPo (3.7 V) on its 5 V pin. Widen the printed battery bay if the cell does not sit in the AA holder.
+
+If a game ignores the pad, use the library's XInput mode so Windows treats it as an Xbox controller. Generic HID is enough for the Windows game-controller test and for most sims.
+
+Already have an ESP32: drop the $6 holder and the wireless board. The cart is **$125** before tax, **$133** with 6% tax, plus a LiPo if you do not have one. Buying a Super Mini adds about $5.
+
 ## Main components
 
 | # | Part | Amazon pick | ~Price | Notes | Backup search |
@@ -101,7 +115,7 @@ Wired this way, drop the wireless board and the battery holder. The cart above g
 | 5 | GT2 pulley, 20T, 6 mm bore, 6 mm belt | [Bemonoc 2GT 20T 6 mm bore (5-pack)](https://www.amazon.com/dp/B014KN70QE) | $10 | Alt: [MECCANIXITY 2-pack](https://www.amazon.com/dp/B09VPR5RZN) | [search](https://www.amazon.com/s?k=GT2+20+teeth+pulley+6mm+bore+6mm+width) |
 | 6 | GT2 belt, closed loop, 212 mm, 6 mm wide | [PJinloog 2GT 212 mm × 6 mm (5-pack)](https://www.amazon.com/dp/B096HCQMVY) | $15 | Pick the **212 mm** length option. Single belt: [FORYON 2GT212](https://www.amazon.com/dp/B0DLNH2GPP) | [search](https://www.amazon.com/s?k=GT2+closed+loop+belt+212mm+6mm) |
 | 7 | GT2 idler, 20T, 5 mm bore, 6 mm belt | [WINSINN GT2 idler 20T 5 mm (5-pack)](https://www.amazon.com/dp/B07BPGYX3G) | $9 | Get the toothed version, not smooth. | [search](https://www.amazon.com/s?k=GT2+idler+20+teeth+5mm+bore+6mm) |
-| 8 | Wireless button board | No confirmed match — best guess: a 2.4 GHz wireless "zero delay" arcade encoder | — | **Check fit.** The AliExpress listing couldn't be read. It runs off the 2×AA holder (item 13), which points to a 2.4 GHz zero-delay wireless encoder with a USB receiver. Compare photos and pin layout with the AliExpress board. | [search](https://www.amazon.com/s?k=2.4G+wireless+zero+delay+arcade+encoder) |
+| 8 | Wireless button board | [AITRIP ESP32-C3 Super Mini, 2-pack](https://www.amazon.com/dp/B0FBGDFPBQ) | $10 | Use one board in the rim as a Bluetooth gamepad ([ESP32-BLE-Gamepad](https://github.com/lemmingDev/ESP32-BLE-Gamepad)). Do not buy an ESP32-S2; it has no Bluetooth. Power it from a 1S LiPo, not two AA cells. | [search](https://www.amazon.com/s?k=ESP32-C3+Super+Mini) |
 | 9 | XT60 connectors | [Amass XT60 male/female, 5 pairs](https://www.amazon.com/dp/B00WND5A5C) | $8 | Estimate; 10-pair with heat shrink: [YoWoo/Amass](https://www.amazon.com/dp/B07233RVL6) | [search](https://www.amazon.com/s?k=Amass+XT60+connectors) |
 | 10 | Limit switches (roller lever) | [HiLetgo KW12-3 roller lever micro switch (10-pack)](https://www.amazon.com/dp/B07X142VGC) | $6 | Paddle shifters. Wire to the normally-open (NO) pin. | [search](https://www.amazon.com/s?k=KW12-3+roller+lever+limit+switch) |
 | 11 | Push buttons | [ucomshop 12 mm momentary, 10-pack](https://www.amazon.com/dp/B072535X2W) | $4 | One pack covers the 8 wheel buttons (12 mm hole). Pre-wired if you would rather not solder: [Meimom 10-pack](https://www.amazon.com/dp/B0D5MC7881) (~$9). | [search](https://www.amazon.com/s?k=12mm+momentary+push+button+10+pack) |

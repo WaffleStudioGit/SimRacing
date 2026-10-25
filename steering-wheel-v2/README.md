@@ -82,9 +82,13 @@ The wireless button board is still extra if you do not already have one (~$20, a
 
 ### Why the batteries are there
 
-The 24 V supply powers the motor controller, which stays on the desk. The buttons live in the rim, and the rim spins, so a cable from those buttons to the PC would twist. The design puts a small wireless board in the rim and runs it on **two AA cells** (3 V) through the battery holder. The cells themselves are not in the price above, only the holder.
+The 24 V supply powers the motor controller, which stays on the desk. The buttons live in the rim, and the rim spins. The published design puts a small wireless board in the rim and runs it on **two AA cells** (3 V) through the battery holder, so no cable has to follow the rim around. The cells themselves are not in the price above, only the holder.
 
-Skip the holder and the cells if you do not use that wireless board. A coiled cable or a slip ring can carry the buttons instead, and then nothing in the rim needs a battery.
+It can be wired. A sim wheel only turns about one and a half turns each way, so a loose loop of wire, or a coiled cable, has enough slack. Each button connects between a controller input and ground. In FFBeast, set that pin to **Generic button**. The pin is already pulled up, so a press to ground reads as on. [FFBeast wiring notes](https://ffbeast.github.io/docs/en/connection_odrive.html).
+
+The MKS XDrive Mini does not bring every GPIO pin out to a connector, and FFBeast has eight button inputs total. This rim wants eight face buttons plus two paddle switches, so those ten switches may not all fit on the Mini's exposed pins. A wired USB button board in the rim, with one cable back to the PC, covers all of them. A slip ring is only needed if the wheel must spin without a stop.
+
+Wired this way, drop the wireless board and the battery holder. The cart above goes from $131 to **$125** before tax, **$133** with 6% tax.
 
 ## Main components
 

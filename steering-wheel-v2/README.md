@@ -63,22 +63,33 @@ Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zo
 
 ### What you still buy
 
-Already on hand: hoverboard motor, Ender 3 lever switches, paddle magnets. Encoder is the $5 MT6701, so the belt, pulley, and idler are out. Buttons are one $4 ten-pack.
+Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit switches, ESP32 for the buttons. Encoder is the MT6701, so the belt, pulley, idler, Omron encoder, wireless board, and AA holder are out.
 
-| Part | ~$ |
-|------|-----|
-| MKS XDrive Mini | 63 |
-| Steering wheel | 23 |
-| XT60 connectors | 8 |
-| Push buttons (10-pack) | 4 |
-| 2×AA battery holder | 6 |
-| 24 V 10 A power supply | 22 |
-| MT6701 encoder | 5 |
-| **Before tax** | **131** |
-| 6% sales tax | 8 |
-| **With tax** | **139** |
+| # | Part | Amazon ASIN | ~$ |
+|---|------|-------------|----|
+| 1 | MKS XDrive Mini | B0GWXY1YWW | 63 |
+| 2 | MT6701 magnetic encoder (magnet included) | B0D3F44HZL | 5 |
+| 3 | XT60 connectors, 5 pairs | B00WND5A5C | 8 |
+| 4 | 12 mm momentary buttons, 10-pack | B072535X2W | 4 |
+| 5 | 24 V 10 A power supply | B078RYWZMH | 22 |
+| 6 | 1S 3.7 V 500 mAh LiPo (ESP32 in the rim) | B07QM19PL8 | 12 |
+| | **Electronics, before tax** | | **114** |
+| | 6% sales tax | | 7 |
+| | **Electronics, with tax** | | **121** |
 
-The wireless button board is still extra if you do not already have one (~$20, about $21 with tax). That makes this cart **$151** before tax and **$160** with tax.
+Quick release used by the V2 mount:
+
+| # | Part | Amazon ASIN | ~$ |
+|---|------|-------------|----|
+| 7 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
+| 8 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
+| 9 | 50 mm Arca-Swiss clamp | B00KYEO70Q | 14 |
+| 10 | 100 mm Arca-Swiss plate | B076Z8LL5Y | 9 |
+| | **Quick release, before tax** | | **57** |
+| | 6% sales tax | | 3 |
+| | **Quick release, with tax** | | **60** |
+
+Electronics plus quick release: **$171** before tax, **$181** with 6% tax. Screws and nails are listed at the bottom and are not in that total.
 
 ### Why the batteries are there
 

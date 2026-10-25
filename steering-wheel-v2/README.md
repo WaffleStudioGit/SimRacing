@@ -63,19 +63,18 @@ Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zo
 
 ### What you still buy
 
-Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit switches, ESP32 for the buttons. Encoder is the MT6701, so the belt, pulley, idler, Omron encoder, wireless board, and AA holder are out.
+Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit switches, ESP32 for the buttons, and XT60 connectors from an old Ender 3. Encoder is the MT6701, so the belt, pulley, idler, Omron encoder, wireless board, and AA holder are out.
 
 | # | Part | Amazon ASIN | ~$ |
 |---|------|-------------|----|
 | 1 | MKS XDrive Mini | B0GWXY1YWW | 63 |
 | 2 | MT6701 magnetic encoder (magnet included) | B0D3F44HZL | 5 |
-| 3 | XT60 connectors, 5 pairs | B00WND5A5C | 8 |
-| 4 | 12 mm momentary buttons, 10-pack | B072535X2W | 4 |
-| 5 | 24 V 10 A power supply | B078RYWZMH | 22 |
-| 6 | 1S 3.7 V 500 mAh LiPo (ESP32 in the rim) | B07QM19PL8 | 12 |
-| | **Electronics, before tax** | | **114** |
-| | 6% sales tax | | 7 |
-| | **Electronics, with tax** | | **121** |
+| 3 | 12 mm momentary buttons, 10-pack | B072535X2W | 4 |
+| 4 | 24 V 10 A power supply | B078RYWZMH | 22 |
+| 5 | 1S 3.7 V 500 mAh LiPo (ESP32 in the rim) | B07QM19PL8 | 12 |
+| | **Electronics, before tax** | | **106** |
+| | 6% sales tax | | 6 |
+| | **Electronics, with tax** | | **112** |
 
 Quick release used by the V2 mount:
 
@@ -89,7 +88,7 @@ Quick release used by the V2 mount:
 | | 6% sales tax | | 3 |
 | | **Quick release, with tax** | | **60** |
 
-Electronics plus quick release: **$171** before tax, **$181** with 6% tax. Screws and nails are listed at the bottom and are not in that total.
+Electronics plus quick release: **$163** before tax, **$173** with 6% tax. Screws and nails are listed at the bottom and are not in that total.
 
 ### Why the batteries are there
 

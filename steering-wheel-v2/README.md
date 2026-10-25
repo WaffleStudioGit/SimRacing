@@ -43,6 +43,22 @@ if a link is dead, use the search link in the last column.
 
 Without the quick release upgrade: **~$399** (379 + 20 wireless). Using genuine Omron encoder (+$90 on item 3): main subtotal **~$469**.
 
+### If you already have a hoverboard and lever switches
+
+Skip the motor ($75) and the roller limit switches ($6). Ender 3 endstops work electrically as the paddle switches. The printed paddle was drawn around a roller lever, so a plain lever can snag; it is fine if the paddle hits the lever cleanly.
+
+### Cheaper magnetic encoder (FFBeast's own cheap build)
+
+The belt, pulley, idler, and Omron-style encoder only exist so the PC can read wheel angle. [FFBeast's encoder page](https://ffbeast.github.io/docs/en/hardware_encoder.html) accepts any incremental A/B encoder, and their [cheap reference wheel](https://ffbeast.github.io/docs/en/wheel_assembly.html) uses an **MT6701** magnetic module at about **$2–5** (4096 counts/rev). Amazon example: [MT6701 module with magnet, ~$5](https://www.amazon.com/dp/B0D3F44HZL).
+
+Use the **ABZ** pins (A and B). Z is unused. In the FFBeast config set encoder CPR to **4096**. Power the module from **3.3 V** so the outputs match the controller pins.
+
+The kit magnet is diametric (poles on the round face). The 30×10×4 mm paddle magnets will not work here. Center that small magnet on the axle end and hold the PCB on the same axis, a couple of millimetres away. Off-center mounting makes the force feel uneven. The DAZ printed parts are shaped for the belt and the 40 mm encoder body, so this needs a small printed bracket of your own. Then you can also skip the GT2 pulley ($10), belt ($15), and idler ($9).
+
+Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zone feels like backlash). The hoverboard's built-in Hall sensors are too coarse.
+
+With a hoverboard, Ender 3 switches, and an MT6701 instead of the belt encoder stack, the main-parts subtotal drops from $379 to about **$229** (controller, wheel, XT60s, two button packs, paddle magnets, battery holder, power supply, and the $5 encoder).
+
 ## Main components
 
 | # | Part | Amazon pick | ~Price | Notes | Backup search |

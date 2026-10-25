@@ -72,23 +72,15 @@ Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit
 | 3 | 12 mm momentary buttons, 10-pack | B072535X2W | 4 |
 | 4 | 24 V 10 A power supply | B078RYWZMH | 22 |
 | 5 | 1S 3.7 V 500 mAh LiPo (ESP32 in the rim) | B07QM19PL8 | 12 |
-| | **Electronics, before tax** | | **106** |
-| | 6% sales tax | | 6 |
-| | **Electronics, with tax** | | **112** |
+| 6 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
+| 7 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
+| 8 | 50 mm Arca-Swiss clamp | B00KYEO70Q | 14 |
+| 9 | 100 mm Arca-Swiss plate | B076Z8LL5Y | 9 |
+| | **Before tax** | | **163** |
+| | 6% sales tax | | 10 |
+| | **With tax** | | **173** |
 
-Quick release used by the V2 mount:
-
-| # | Part | Amazon ASIN | ~$ |
-|---|------|-------------|----|
-| 7 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
-| 8 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
-| 9 | 50 mm Arca-Swiss clamp | B00KYEO70Q | 14 |
-| 10 | 100 mm Arca-Swiss plate | B076Z8LL5Y | 9 |
-| | **Quick release, before tax** | | **57** |
-| | 6% sales tax | | 3 |
-| | **Quick release, with tax** | | **60** |
-
-Electronics plus quick release: **$163** before tax, **$173** with 6% tax. Screws and nails are listed at the bottom and are not in that total.
+Screws and nails are listed at the bottom and are not in that total.
 
 ### Why the batteries are there
 

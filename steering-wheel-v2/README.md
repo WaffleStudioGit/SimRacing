@@ -20,7 +20,7 @@ if a link is dead, use the search link in the last column.
 | 1 | MKS XDrive Mini | 63 | Amazon listing |
 | 2 | 6.5" hoverboard motor | 75 | Amazon listing |
 | 3 | Encoder E6B2-CWZ6C 2000 P/R (generic) | 40 | Amazon listing |
-| 4 | Steering wheel 13" / 330 mm | 95 | Estimate (RUNSCO ~$95 direct; Amazon ASIN often unavailable) |
+| 4 | Steering wheel, flat 6-bolt (~350 mm) | 23 | [YEHICY 13.8" flat, 6-bolt](https://www.amazon.com/dp/B09GRQ8XR2). Confirm the holes sit on a 70 mm circle. |
 | 5 | GT2 pulley 20T | 10 | Amazon listing (5-pack; you need one) |
 | 6 | GT2 belt 212 mm | 15 | Amazon listing (5-pack; you need one) |
 | 7 | GT2 idler 20T | 9 | Amazon listing (5-pack; you need one) |
@@ -31,17 +31,17 @@ if a link is dead, use the search link in the last column.
 | 12 | Magnets 30×10×4 mm (18-pack) | 12 | Estimate |
 | 13 | 2×AA battery holder | 6 | Amazon listing (3-pack; you need one) |
 | 14 | 24 V 10 A PSU | 22 | Amazon listing |
-| | **Subtotal (main only)** | **379** | |
+| | **Subtotal (main only)** | **307** | |
 
 | Group | Cost |
 |-------|------|
-| Main components (table above) | 379 |
+| Main components (table above) | 307 |
 | Wireless button board (item 8, unconfirmed part) | ~20 |
 | Quick release upgrade (items 15–18) | ~57 |
 | Nuts, bolts, nails | ~20 |
-| **Full build** | **~475** |
+| **Full build** | **~404** |
 
-Without the quick release upgrade: **~$399** (379 + 20 wireless). Using genuine Omron encoder (+$90 on item 3): main subtotal **~$469**.
+Without the quick release upgrade: **~$327** (307 + 20 wireless). Using the ~$95 suede rim instead of the $23 wheel adds about $72. Genuine Omron encoder adds $90 on item 3.
 
 ### If you already have a hoverboard and lever switches
 
@@ -57,7 +57,7 @@ The kit magnet is diametric (poles on the round face). The 30×10×4 mm paddle m
 
 Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zone feels like backlash). The hoverboard's built-in Hall sensors are too coarse.
 
-With a hoverboard, Ender 3 switches, and an MT6701 instead of the belt encoder stack, the main-parts subtotal drops from $379 to about **$229** (controller, wheel, XT60s, two button packs, paddle magnets, battery holder, power supply, and the $5 encoder).
+With a hoverboard, Ender 3 switches, the $23 wheel, and an MT6701 instead of the belt encoder stack, the main-parts subtotal is about **$157** (controller $63, wheel $23, XT60s $8, two button packs $18, paddle magnets $12, battery holder $6, power supply $22, encoder $5).
 
 ## Main components
 
@@ -66,7 +66,7 @@ With a hoverboard, Ender 3 switches, and an MT6701 instead of the belt encoder s
 | 1 | MKS XDrive Mini (FOC controller) | [CLNXMT MKS XDrive Mini, ODrive 3.6 + AS5047P](https://www.amazon.com/dp/B0GWXY1YWW) | $63 | Same board as the AliExpress one, marked up. Stay on its stock v0.5.1 firmware; don't run the odrivetool `upgrade` command on it. | [search](https://www.amazon.com/s?k=MKS+XDrive+Mini) |
 | 2 | 6.5" hoverboard motor | [L-faster 6.5" self-balancing scooter motor, 36V 350W](https://www.amazon.com/dp/B0CCV76FCM) | $75 | Sold as a hoverboard replacement. A reviewer used it for a force-feedback wheel but had to reseat a crooked bearing. A used hoverboard from a local marketplace is often cheaper. | [search](https://www.amazon.com/s?k=6.5+inch+hoverboard+motor+replacement) |
 | 3 | Encoder E6B2-CWZ6C 2000 P/R | [RSHVOBRRS E6B2-CWZ6C 2000P/R, 5–24 V NPN, 2 m cable](https://www.amazon.com/dp/B0FXFCBY9T) | $40 | Generic copy, same part number and 6 mm shaft. Genuine: [Omron E6B2-CWZ6C 2000P/R 2M](https://www.amazon.com/dp/B00J7HSSN8) ($130). | [search](https://www.amazon.com/s?k=E6B2-CWZ6C+2000P%2FR) |
-| 4 | Steering wheel (13" / 330 mm) | [RUNSCO 13" 330 mm suede, 6-bolt 70 mm PCD](https://www.amazon.com/dp/B09Z22MFZL) or [Hiracing 330 mm flat-bottom, 6-bolt 70 mm](https://www.amazon.com/dp/B0D73GH2K4) | $95 | **Check fit.** Estimate when Amazon is out of stock; RUNSCO sells direct ~$95. Match 330 mm and 6×70 mm PCD. | [search](https://www.amazon.com/s?k=13+inch+330mm+6+bolt+steering+wheel+suede) |
+| 4 | Steering wheel | [YEHICY 13.8" / 350 mm flat, 6-bolt, vinyl](https://www.amazon.com/dp/B09GRQ8XR2) | $23 | **Check fit.** Buy a flat wheel, not a deep dish, and confirm the 6 holes are on a 70 mm circle. Listing that states 6×70 mm: [VANJALA 330 mm](https://www.amazon.com/dp/B0GXYBJS4R) (~$49). Nicer suede: [RUNSCO 330 mm](https://www.amazon.com/dp/B09Z22MFZL) (~$95). The designer only guarantees his own rim; spoke shape and grip thickness can foul the printed shells. | [search](https://www.amazon.com/s?k=13.8+inch+6+bolt+flat+steering+wheel) |
 | 5 | GT2 pulley, 20T, 6 mm bore, 6 mm belt | [Bemonoc 2GT 20T 6 mm bore (5-pack)](https://www.amazon.com/dp/B014KN70QE) | $10 | Alt: [MECCANIXITY 2-pack](https://www.amazon.com/dp/B09VPR5RZN) | [search](https://www.amazon.com/s?k=GT2+20+teeth+pulley+6mm+bore+6mm+width) |
 | 6 | GT2 belt, closed loop, 212 mm, 6 mm wide | [PJinloog 2GT 212 mm × 6 mm (5-pack)](https://www.amazon.com/dp/B096HCQMVY) | $15 | Pick the **212 mm** length option. Single belt: [FORYON 2GT212](https://www.amazon.com/dp/B0DLNH2GPP) | [search](https://www.amazon.com/s?k=GT2+closed+loop+belt+212mm+6mm) |
 | 7 | GT2 idler, 20T, 5 mm bore, 6 mm belt | [WINSINN GT2 idler 20T 5 mm (5-pack)](https://www.amazon.com/dp/B07BPGYX3G) | $9 | Get the toothed version, not smooth. | [search](https://www.amazon.com/s?k=GT2+idler+20+teeth+5mm+bore+6mm) |

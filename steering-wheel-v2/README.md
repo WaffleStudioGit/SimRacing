@@ -70,11 +70,11 @@ Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit
 | 1 | MKS XDrive Mini | B0GWXY1YWW | 63 |
 | 2 | MT6701 magnetic encoder (magnet included) | B0D3F44HZL | 5 |
 | 3 | 24 V 10 A power supply | B078RYWZMH | 22 |
-| 4 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
+| 4 | 16×16 aluminum shaft clamp, single screw | WsidQokfn 16×16 mm | 16 |
 | 5 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
-| | **Before tax** | | **124** |
+| | **Before tax** | | **116** |
 | | 6% sales tax | | 7 |
-| | **With tax** | | **131** |
+| | **With tax** | | **123** |
 
 Screws and nails are listed at the bottom and are not in that total.
 

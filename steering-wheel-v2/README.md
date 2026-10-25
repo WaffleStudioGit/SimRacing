@@ -63,20 +63,18 @@ Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zo
 
 ### What you still buy
 
-Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit switches, ESP32 for the buttons, and XT60 connectors from an old Ender 3. Encoder is the MT6701, so the belt, pulley, idler, Omron encoder, wireless board, and AA holder are out.
+Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit switches, ESP32, and XT60 connectors from an old Ender 3. No buttons on the rim, so the button pack, LiPo, wireless board, and AA holder are out. Encoder is the MT6701, so the belt, pulley, idler, and Omron encoder are out too.
 
 | # | Part | Amazon ASIN | ~$ |
 |---|------|-------------|----|
 | 1 | MKS XDrive Mini | B0GWXY1YWW | 63 |
 | 2 | MT6701 magnetic encoder (magnet included) | B0D3F44HZL | 5 |
-| 3 | 12 mm momentary buttons, 10-pack | B072535X2W | 4 |
-| 4 | 24 V 10 A power supply | B078RYWZMH | 22 |
-| 5 | 1S 3.7 V 500 mAh LiPo (ESP32 in the rim) | B07QM19PL8 | 12 |
-| 6 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
-| 7 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
-| | **Before tax** | | **140** |
-| | 6% sales tax | | 8 |
-| | **With tax** | | **148** |
+| 3 | 24 V 10 A power supply | B078RYWZMH | 22 |
+| 4 | 16×16 aluminum shaft clamp | B0BJ39VF5W | 24 |
+| 5 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
+| | **Before tax** | | **124** |
+| | 6% sales tax | | 7 |
+| | **With tax** | | **131** |
 
 Screws and nails are listed at the bottom and are not in that total.
 

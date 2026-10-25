@@ -11,13 +11,27 @@ if a link is dead, use the search link in the last column.
 > **check fit** should be compared against the AliExpress listing (photos, dimensions)
 > before you order.
 
+## Estimated total (Oct 2026, before tax and shipping)
+
+| Group | Cost |
+|-------|------|
+| Main components (items 1–14, two button packs, no wireless board) | ~$379 |
+| Wireless button board (unconfirmed part) | ~$20 |
+| Quick release upgrade (items 15–18) | ~$57 |
+| Nuts, bolts, nails | ~$20 |
+| **Full build** | **~$475** |
+
+Without the quick release upgrade it's about $420. Using the genuine Omron encoder adds $90.
+The steering wheel (~$95), XT60s (~$8), magnets (~$12), axle clamp (~$24), board and
+hardware are estimates; the rest are listed Amazon prices.
+
 ## Main components
 
 | # | Part | Amazon pick | ~Price | Notes | Backup search |
 |---|------|-------------|--------|-------|---------------|
 | 1 | MKS XDrive Mini (FOC controller) | [CLNXMT MKS XDrive Mini, ODrive 3.6 + AS5047P](https://www.amazon.com/dp/B0GWXY1YWW) | $63 | Same board as the AliExpress one, marked up. Stay on its stock v0.5.1 firmware; don't run the odrivetool `upgrade` command on it. | [search](https://www.amazon.com/s?k=MKS+XDrive+Mini) |
 | 2 | 6.5" hoverboard motor | [L-faster 6.5" self-balancing scooter motor, 36V 350W](https://www.amazon.com/dp/B0CCV76FCM) | $75 | Sold as a hoverboard replacement. A reviewer used it for a force-feedback wheel but had to reseat a crooked bearing. A used hoverboard from a local marketplace is often cheaper. | [search](https://www.amazon.com/s?k=6.5+inch+hoverboard+motor+replacement) |
-| 3 | Encoder E6B2-CWZ6C 2000 P/R | [Omron E6B2-CWZ6C 2000P/R 2M (genuine)](https://www.amazon.com/dp/B00J7HSSN8) | $130 | Genuine Omron is pricey on Amazon. Cheaper copies with the same part number and 6 mm shaft also work. | [search](https://www.amazon.com/s?k=E6B2-CWZ6C+2000P%2FR) |
+| 3 | Encoder E6B2-CWZ6C 2000 P/R | [RSHVOBRRS E6B2-CWZ6C 2000P/R, 5–24 V NPN, 2 m cable](https://www.amazon.com/dp/B0FXFCBY9T) | $40 | Generic copy, same part number and 6 mm shaft. Genuine: [Omron E6B2-CWZ6C 2000P/R 2M](https://www.amazon.com/dp/B00J7HSSN8) ($130). | [search](https://www.amazon.com/s?k=E6B2-CWZ6C+2000P%2FR) |
 | 4 | Steering wheel (13" / 330 mm) | [RUNSCO 13" 330 mm suede, 6-bolt 70 mm PCD](https://www.amazon.com/dp/B09Z22MFZL) or [Hiracing 330 mm flat-bottom, 6-bolt 70 mm](https://www.amazon.com/dp/B0D73GH2K4) | — | **Check fit.** The designer says he can't guarantee other wheels. Match diameter (330 mm) and the 6×70 mm bolt pattern. | [search](https://www.amazon.com/s?k=13+inch+330mm+6+bolt+steering+wheel+suede) |
 | 5 | GT2 pulley, 20T, 6 mm bore, 6 mm belt | [Bemonoc 2GT 20T 6 mm bore (5-pack)](https://www.amazon.com/dp/B014KN70QE) | $10 | Alt: [MECCANIXITY 2-pack](https://www.amazon.com/dp/B09VPR5RZN) | [search](https://www.amazon.com/s?k=GT2+20+teeth+pulley+6mm+bore+6mm+width) |
 | 6 | GT2 belt, closed loop, 212 mm, 6 mm wide | [PJinloog 2GT 212 mm × 6 mm (5-pack)](https://www.amazon.com/dp/B096HCQMVY) | $15 | Pick the **212 mm** length option. Single belt: [FORYON 2GT212](https://www.amazon.com/dp/B0DLNH2GPP) | [search](https://www.amazon.com/s?k=GT2+closed+loop+belt+212mm+6mm) |

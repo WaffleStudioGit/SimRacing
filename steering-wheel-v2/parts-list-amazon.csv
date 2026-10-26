@@ -1,0 +1,19 @@
+component,amazon_link,approx_price_usd,alternative_link,notes
+mks xDrive mini,https://www.amazon.com/dp/B0GWXY1YWW,63,https://www.amazon.com/s?k=MKS+XDrive+Mini,keep stock v0.5.1 firmware
+6.5 inch hoverboard motor,https://www.amazon.com/dp/B0CCV76FCM,75,https://www.amazon.com/s?k=6.5+inch+hoverboard+motor+replacement,used hoverboard is often cheaper
+encoder E6B2CWZ6C 2000pr,https://www.amazon.com/dp/B0FXFCBY9T,40,https://www.amazon.com/dp/B00J7HSSN8,generic copy; alternative is genuine Omron at $130
+steering wheel (flat vinyl),https://www.amazon.com/dp/B09GRQ8XR2,23,https://www.amazon.com/dp/B075FJL18P,bolt pattern does not matter; drill the hub or a plate
+"20t gt2 pulley (6mm hole, 6mm width)",https://www.amazon.com/dp/B014KN70QE,10,https://www.amazon.com/dp/B09VPR5RZN,
+"gt2 belt (212mm, 6mm width)",https://www.amazon.com/dp/B096HCQMVY,15,https://www.amazon.com/dp/B0DLNH2GPP,select 212mm option
+"idler (20t, 6mm width, 5mm bore)",https://www.amazon.com/dp/B07BPGYX3G,9,https://www.amazon.com/dp/B0BSPCHTD3,toothed version
+wireless button board,https://www.amazon.com/dp/B0FBGDFPBQ,10,https://github.com/lemmingDev/ESP32-BLE-Gamepad,ESP32-C3 Super Mini as BLE gamepad; not ESP32-S2; power from 1S LiPo
+xt60 connectors,https://www.amazon.com/dp/B00WND5A5C,,https://www.amazon.com/dp/B07233RVL6,
+limit switches (roller lever),https://www.amazon.com/dp/B07X142VGC,6,https://www.amazon.com/dp/B0CPYNDYPP,KW12-3; wire to NO pin
+push buttons (12mm momentary 10-pack),https://www.amazon.com/dp/B072535X2W,4,https://www.amazon.com/dp/B0D5MC7881,one 10-pack covers 8 buttons; alt is pre-wired
+magnets (30x10x4 mm or 30x10x3 mm),https://www.amazon.com/dp/B0C9CKX9Y9,,https://www.amazon.com/s?k=30x10x4mm+neodymium+block+magnet,
+AA battery holder (2 batteries),https://www.amazon.com/dp/B07TB4HDYH,6,https://www.amazon.com/dp/B09T9XZH5M,
+power supply (24v 10A),https://www.amazon.com/dp/B078RYWZMH,22,https://www.amazon.com/dp/B00NBMW7F0,
+motor axle clamp (16x16),https://www.amazon.com/dp/B0BJ39VF5W,,https://www.amazon.com/dp/B0FKN26VJR,quick release upgrade only; choose 16x16
+16mm aluminum tube (cut to 100mm),https://www.amazon.com/dp/B0CL6L4BR8,10,https://www.amazon.com/dp/B0F1Y89W8C,quick release upgrade only
+quick release base (arca-swiss clamp),https://www.amazon.com/dp/B00KYEO70Q,14,https://www.amazon.com/dp/B096XQ8L2W,quick release upgrade only; check fit
+quick release plate (100mm long),https://www.amazon.com/dp/B076Z8LL5Y,9,https://www.amazon.com/dp/B0B3RJ1V3S,quick release upgrade only

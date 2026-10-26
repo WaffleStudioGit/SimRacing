@@ -54,6 +54,10 @@ Bind the keys in `[controls]` to whatever your game uses for ignition, lights, h
 - **BeamNG**: OutGauge → port `4444`
 - **Assetto Corsa**: bridge on same Windows PC as the game
 
+## Steering wheel build
+
+Amazon parts list for the DAZ Racing V2 hoverboard wheel: [`steering-wheel-v2/`](steering-wheel-v2/README.md).
+
 ## Notes
 
 - Put a resistor on every LED. Ten bare LEDs will abuse the Uno.

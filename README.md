@@ -35,13 +35,26 @@ PC → board:  V <km/h> <rpm>   |  C <max_speed> <max_rpm>  |  Z
 board → PC:  I <engine> <lights> <btn1> <btn2> <btn3>
 ```
 
-## Bridge
+## Bridge / launcher
 
 ```bash
 cd bridge
 pip install -r requirements.txt
 pip install pynput          # Windows gaming PC — cabin → keyboard
 cp config.example.toml config.toml   # set COM port + keybinds
+```
+
+**Main app** (click a game → starts the bridge, optionally the game exe):
+
+```bash
+python -m sim_gauges.launcher
+```
+
+Or double-click `bridge/Launch Gauges.bat`. Set `forza_exe` / `beamng_exe` / `assetto_exe` under `[launcher]` in `config.toml` if you want the game to open with the bridge.
+
+CLI still works:
+
+```bash
 python -m sim_gauges --game demo --port COM3
 python -m sim_gauges --game forza --port COM3
 ```

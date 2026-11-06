@@ -2,6 +2,8 @@
 
 Game speed + RPM → PC bridge → Arduino → servos, shift-light bar, cabin controls.
 
+**Quick start (Windows):** flash the firmware, plug in the Uno, then double-click `Launch Gauges.bat` and pick a game.
+
 ```
 Game ──telemetry──► bridge ──serial──► Arduino ──► speed servo
                                       │           rpm servo

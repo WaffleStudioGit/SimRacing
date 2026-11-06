@@ -65,16 +65,18 @@ Skip the AS5600 (no A/B output the firmware can use) and the TLE5012B (a dead zo
 
 Already on hand: hoverboard motor, steering wheel, paddle magnets, Ender 3 limit switches, ESP32, and XT60 connectors from an old Ender 3. No buttons on the rim, so the button pack, LiPo, wireless board, and AA holder are out. Encoder is the MT6701, so the belt, pulley, idler, and Omron encoder are out too.
 
-| # | Part | Amazon ASIN | ~$ |
-|---|------|-------------|----|
-| 1 | MKS XDrive Mini | B0GWXY1YWW | 63 |
+| # | Part | Where | ~$ |
+|---|------|-------|----|
+| 1 | MKS XDrive Mini | [Makerbase](https://makerbase3d.com/product/makerbase-xdrive-mini-high-precision-brushless-servo-motor-controller-based-on-odrive3-6-with-as5047p-on-board/), $41 before shipping. Amazon fallback B0GWXY1YWW is $63 | 41 |
 | 2 | MT6701 magnetic encoder (magnet included) | B0D3F44HZL | 5 |
-| 3 | 24 V 10 A power supply | B078RYWZMH | 22 |
+| 3 | 24 V 10 A power supply | B07QMLFMRH (Padarsey). Fanless fallback B078RYWZMH is $22 | 16 |
 | 4 | 16×16 aluminum shaft clamp, single screw | WsidQokfn 16×16 mm | 16 |
 | 5 | 16 mm aluminum tube, cut to 100 mm | B0CL6L4BR8 | 10 |
-| | **Before tax** | | **116** |
-| | 6% sales tax | | 7 |
-| | **With tax** | | **123** |
+| | **Before tax** | | **88** |
+| | 6% sales tax | | 5 |
+| | **With tax** | | **93** |
+
+Makerbase shipping to the US is not in the $41. A hardware-store or scrap 16 mm tube, cut to 100 mm, drops another $10 and puts the total near **$83** with tax.
 
 Screws and nails are listed at the bottom and are not in that total.
 

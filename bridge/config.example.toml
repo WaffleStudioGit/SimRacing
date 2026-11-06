@@ -14,9 +14,11 @@ keyboard = true
 engine_on = "i"        # key ignition / starter
 engine_off = "i"       # often same toggle; set blank to skip
 headlights = "l"
-btn1 = "h"             # e.g. horn
-btn2 = "c"             # e.g. look / camera
-btn3 = "v"
+# 3× Ender 3 / Creality mechanical endstops on A2 A3 A4
+endstop1 = "h"         # e.g. horn
+endstop2 = "c"         # e.g. look / camera
+endstop3 = "v"
+# btn1 / btn2 / btn3 still work as aliases for the same three inputs
 
 [forza]
 listen_ip = "0.0.0.0"
@@ -28,3 +30,13 @@ listen_port = 4444
 
 [assetto]
 physics_map = "Local\\acpmf_physics"
+
+# Optional: full paths so the launcher can start the game when you click it
+[launcher]
+forza_exe = ""
+beamng_exe = ""
+assetto_exe = ""
+# Examples (edit to your installs):
+# forza_exe = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\ForzaHorizon5\\ForzaHorizon5.exe"
+# beamng_exe = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\BeamNG.drive\\Bin64\\BeamNG.drive.x64.exe"
+# assetto_exe = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\assettocorsa\\acs.exe"

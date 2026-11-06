@@ -30,15 +30,23 @@ def _key(section: Dict[str, Any], name: str, default: Optional[str]) -> Optional
     return s or None
 
 
+def _btn_key(section: Dict[str, Any], index: int, default: str) -> Optional[str]:
+    # Prefer endstopN (Ender 3 switches); fall back to btnN
+    for name in (f"endstop{index}", f"btn{index}"):
+        if name in section:
+            return _key(section, name, default)
+    return default
+
+
 def binds_from_config(cfg: Dict[str, Any]) -> KeyBinds:
     section = cfg.get("controls", {})
     return KeyBinds(
         engine_on=_key(section, "engine_on", "i"),
         engine_off=_key(section, "engine_off", "i"),
         headlights=_key(section, "headlights", "l"),
-        btn1=_key(section, "btn1", "h"),
-        btn2=_key(section, "btn2", "c"),
-        btn3=_key(section, "btn3", "v"),
+        btn1=_btn_key(section, 1, "h"),
+        btn2=_btn_key(section, 2, "c"),
+        btn3=_btn_key(section, 3, "v"),
         enabled=bool(section.get("keyboard", True)),
     )
 
@@ -97,8 +105,8 @@ class CabinController:
             self._tap(self.binds.headlights, "headlights")
 
         if state.btn1 and not prev.btn1:
-            self._tap(self.binds.btn1, "btn1")
+            self._tap(self.binds.btn1, "endstop1")
         if state.btn2 and not prev.btn2:
-            self._tap(self.binds.btn2, "btn2")
+            self._tap(self.binds.btn2, "endstop2")
         if state.btn3 and not prev.btn3:
-            self._tap(self.binds.btn3, "btn3")
+            self._tap(self.binds.btn3, "endstop3")

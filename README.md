@@ -6,7 +6,7 @@ Game speed + RPM → PC bridge → Arduino → servos, shift-light bar, cabin co
 Game ──telemetry──► bridge ──serial──► Arduino ──► speed servo
                                       │           rpm servo
                                       │           10× LED shift lights
-                                      └──◄── key / lights / 3 buttons
+                                      └──◄── key / lights / 3× Ender endstops
                                               (bridge → in-game keys)
 ```
 
@@ -21,7 +21,19 @@ Games: **Forza** (Data Out), **BeamNG** (OutGauge), **Assetto Corsa** (shared me
 | LED bar (10) GGGG YYY RRR | **D2–D8, D11, D12, D13** | Anode → pin, cathode → **220Ω** → GND |
 | Engine key (toggle) | **A0** | Switch between pin and GND (pull-up on) |
 | Headlights rocker | **A1** | same |
-| Pushbuttons 1 / 2 / 3 | **A2 / A3 / A4** | Momentary to GND |
+| Ender 3 endstops 1 / 2 / 3 | **A2 / A3 / A4** | See wiring below |
+
+### Ender 3 endstops (buttons)
+
+Stock Creality mechanical endstops are the three cabin buttons. Plug is usually **GND / SIG / VCC** (sometimes labeled G S V — verify your cable):
+
+| Endstop wire | Arduino |
+|--------------|---------|
+| GND | GND |
+| SIG | A2, A3, or A4 |
+| VCC | **5V** (powers the little LED on the board) |
+
+Lever pressed → SIG low → “button down” (25 ms debounce in firmware). If a switch reads inverted, set `ENDSTOP_INVERT` to `1` in the sketch.
 
 Shift lights fill left→right with RPM (first LED ~55% redline, full bar at redline, flash above ~97%). Key **off** parks needles and kills the bar.
 
@@ -32,7 +44,7 @@ Shift lights fill left→right with RPM (first LED ~55% redline, full bar at red
 
 ```
 PC → board:  V <km/h> <rpm>   |  C <max_speed> <max_rpm>  |  Z
-board → PC:  I <engine> <lights> <btn1> <btn2> <btn3>
+board → PC:  I <engine> <lights> <endstop1> <endstop2> <endstop3>
 ```
 
 ## Bridge

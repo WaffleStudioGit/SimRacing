@@ -53,7 +53,7 @@ def _fmt_cabin(inputs) -> str:
     e = "ON" if inputs.engine else "off"
     h = "H" if inputs.headlights else "·"
     b = "".join("*" if x else "·" for x in (inputs.btn1, inputs.btn2, inputs.btn3))
-    return f"eng={e} lit={h} btn={b}"
+    return f"eng={e} lit={h} es={b}"
 
 
 def main(argv: list[str] | None = None) -> int:
